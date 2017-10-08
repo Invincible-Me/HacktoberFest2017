@@ -17,7 +17,7 @@ app.get('/',function(req,res){
 
 app.post('/submit', function (req, res) {
 
-	var responseString = "";
+	var responseString = "Here are some suggestions to your resume";
 
 	//if a checkbox is not checked it will be undefined
 	response = {
@@ -56,11 +56,15 @@ app.post('/submit', function (req, res) {
 		responseString += "<br>An Objective statement highlights the purpose of a resume"
 	}
 
-	var haEducation = (req.body.education.toUpperCase() === "YES");
+	var hasEducation = (req.body.skills.toUpperCase() === "YES");
 	if(!hasObjective){
 		responseString += "<br>Your highest degree will help Employeers see your educational achievements"
 	}	
 
+	var hasSkills = (req.body.skills.toUpperCase() === "YES");
+	if(!hasSkills){
+		responseString += "<br>List some skills to show what you are good at"
+	}	
 	res.send(responseString);
 })
 
