@@ -1,67 +1,38 @@
 /*Hello World*/
 console.log("Hello, World!");
 
-
-
-
-
+var path = require("path");
 var express = require("express");
-var app     = express();
-var path    = require("path");
+var app = express();
 
 var bodyParser = require('body-parser');
-// Create application/x-www-form-urlencoded parser
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-	app.get('/',function(req,res){
-		res.sendFile(path.join(__dirname+'/resume.html'));
-	});
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true })); 
+
+app.get('/',function(req,res){
+	res.sendFile(path.join(__dirname+'/resume.html'));
+});
 
 
-app.post('/submit',urlencodedParser, function (req, res) {
-	// console.log(req.body);
+app.post('/submit', function (req, res) {
 
+	//if a checkbox is not checked it will be undefined
 	response = {
-		first_name:req.body.first_name,
-		last_name:req.body.last_name
+		form_data:req.body
 	};
 	console.log(response);
 
-console.log(req.body.haveResumeYes);
-console.log(req.body.haveResumeNO);
-
-	// console.log("have resume value is: "+req.body.haveResumeYes);
-	// console.log(res);
-
+    //if haveResumeYes is defined
+	if(req.body.haveResumeYes){
+		console.log("yes value is selected")
+	}
+	
+	//if haveResumeNo is defined
+	if(req.body.haveResumeNo){
+		console.log("no value is selected")
+	}	
 })
+
 app.listen(3000);
-
-
-
 console.log("Running at Port 3000");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
