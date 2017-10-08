@@ -17,8 +17,7 @@ app.get('/',function(req,res){
 
 app.post('/submit', function (req, res) {
 
-	var responseString = "Here are some suggestions to your resume";
-
+	var responseString = "";
 	//if a checkbox is not checked it will be undefined
 	response = {
 		form_data:req.body
@@ -38,28 +37,37 @@ app.post('/submit', function (req, res) {
 	//console.log("type of contact info is: "+typeof(req.body.contact));
 	var hasContact = req.body.contact.toUpperCase() === "yes".toUpperCase();
 	if(hasContact){
-         console.log("Resume has contact info");
+           //console.log("Resume has contact info");
 	}else{
-        console.log("Resume has no contact info");
+           // console.log("Resume has no contact info");
+	   responseString += "<br>If you don't put your contact info, how will your employer tell you that you got the job?";
 	}
 
 	var hasWork=req.body.work.toUpperCase() === "yes".toUpperCase();
         //console.log("work experience info is: "+req.body.work);
-	        if(hasWork){
-	         console.log("Resume has work info");
-	        }else{
-	         console.log("Resume has no work info");
-	         }   
+	if(hasWork){
+	   //console.log("Resume has work info");
+	}else{
+	   //console.log("Resume has no work info");
+	   responseString += "<br>It is very important to include your previous work history";
+	}   
 
 	var hasObjective = (req.body.objective.toUpperCase() === "YES");
 	if(!hasObjective){
-		responseString += "<br>An Objective statement highlights the purpose of a resume"
+		responseString += "<br>An Objective statement highlights the purpose of a resume";
 	}
 
 	var hasEducation = (req.body.skills.toUpperCase() === "YES");
 	if(!hasObjective){
-		responseString += "<br>Your highest degree will help Employeers see your educational achievements"
+		responseString += "<br>Your highest degree will help Employeers see your educational achievements";
 	}	
+	
+	//final response string formatting
+	if(responseString.length===0){
+                responseString = "<br>Your resume is in good shape! You got this"
+	}else{
+                responseString = "You should consider the following feedback:"+responseString;
+        }
 
 	var hasSkills = (req.body.skills.toUpperCase() === "YES");
 	if(!hasSkills){
