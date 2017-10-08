@@ -32,7 +32,22 @@ app.post('/submit', function (req, res) {
 	if(req.body.haveResumeNo){
 		console.log("no value is selected")
 	}
-	console.log("contact info is: "+req.body.contact);
+	//console.log("contact info is: "+req.body.contact);
+	//console.log("type of contact info is: "+typeof(req.body.contact));
+	var hasContact = req.body.contact.toUpperCase() === "yes".toUpperCase();
+	if(hasContact){
+         console.log("Resume has contact info");
+	}else{
+        console.log("Resume has no contact info");
+	}
+
+	var hasWork=req.body.work.toUpperCase() === "yes".toUpperCase();
+        //console.log("work experience info is: "+req.body.work);
+	        if(hasWork){
+	         console.log("Resume has work info");
+	        }else{
+	         console.log("Resume has no work info");
+	         }   
 
 })
 

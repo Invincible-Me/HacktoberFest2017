@@ -7,11 +7,6 @@
 	<body>	
 	
 		<form action="/submit" method="post" id="productForm">
-			Do you have a Resume:<br>
-			YES<input type="checkbox" name="haveResumeYes">
-			NO<input type="checkbox" name="haveResumeNo">
-				
-			<br>
 			Do you have your name and contact information on your resume?
 			<br>
 			    <input type="radio" name="contact" value="Yes" checked>
@@ -20,6 +15,15 @@
 				    <input type="radio" id="contactInfo2"
 			              name="contact" value="No">
 				        <label for="contactInfo2">No</label>
+			<br>
+                       Do you have your work experience on your resume?
+			<br>
+                            <input type="radio" name="work" value="Yes" checked>
+                                <label for="work1" id=work1>Yes</label>
+
+                                    <input type="radio" id="work2"
+                                      name="work" value="No">
+                                        <label for="work2">No</label>
 
 
 			<br><input type="submit" value="Submit">
