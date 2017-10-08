@@ -56,6 +56,10 @@ app.post('/submit', function (req, res) {
 		responseString += "<br>An Objective statement highlights the purpose of a resume"
 	}
 
+	var haEducation = (req.body.education.toUpperCase() === "YES");
+	if(!hasObjective){
+		responseString += "<br>Your highest degree will help Employeers see your educational achievements"
+	}	
 
 	res.send(responseString);
 })
