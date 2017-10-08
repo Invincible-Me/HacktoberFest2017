@@ -4,25 +4,15 @@
 		<title>Resume Questionnaire</title>
 	</head>
 	
-	<body>
-		
-		<!-- first way individual-->
-		Do you have a Resume: <input type="checkbox" id="haveResume"><br><br>
-
-		
-		<!-- second way -->		
-		<form action="/submit" method="post">
+	<body>	
+	
+		<form action="/submit" method="post" id="productForm">
 			Do you have a Resume:<br>
-			         First Name: <input type = "text" name = "first_name"> <br>
-				          Last Name: <input type = "text" name = "last_name">
-					  
-			YES<input type="checkbox" id="haveResumeYes">
-			NO<input type="checkbox" id="haveResumeNO">
-			
-			
+			YES<input type="checkbox" name="haveResumeYes">
+			NO<input type="checkbox" name="haveResumeNo">
+				
 			<br><br><input type="submit" value="Submit">
-		</form>	
-		
+		</form>		
 		
 	</body>	
 </html>
