@@ -17,6 +17,8 @@ app.get('/',function(req,res){
 
 app.post('/submit', function (req, res) {
 
+	var responseString = "";
+
 	//if a checkbox is not checked it will be undefined
 	response = {
 		form_data:req.body
@@ -49,6 +51,13 @@ app.post('/submit', function (req, res) {
 	         console.log("Resume has no work info");
 	         }   
 
+	var hasObjective = (req.body.objective.toUpperCase() === "YES");
+	if(!hasObjective){
+		responseString += "<br>An Objective statement highlights the purpose of a resume"
+	}
+
+
+	res.send(responseString);
 })
 
 app.listen(3000);
