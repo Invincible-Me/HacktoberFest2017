@@ -31,7 +31,9 @@ app.post('/submit', function (req, res) {
 	//if haveResumeNo is defined
 	if(req.body.haveResumeNo){
 		console.log("no value is selected")
-	}	
+	}
+	console.log("contact info is: "+req.body.contact);
+
 })
 
 app.listen(3000);
