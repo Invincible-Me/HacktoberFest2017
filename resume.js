@@ -18,6 +18,21 @@ app.get('/',function(req,res){
 app.post('/submit', function (req, res) {
 
 	var responseString = "";
+	//if a checkbox is not checked it will be undefined
+	response = {
+		form_data:req.body
+	};
+	console.log(response);
+
+    //if haveResumeYes is defined
+	if(req.body.haveResumeYes){
+		console.log("yes value is selected")
+	}
+	
+	//if haveResumeNo is defined
+	if(req.body.haveResumeNo){
+		console.log("no value is selected")
+	}
 	//console.log("contact info is: "+req.body.contact);
 	//console.log("type of contact info is: "+typeof(req.body.contact));
 	var hasContact = req.body.contact.toUpperCase() === "yes".toUpperCase();
@@ -42,7 +57,7 @@ app.post('/submit', function (req, res) {
 		responseString += "<br>An Objective statement highlights the purpose of a resume";
 	}
 
-	var haEducation = (req.body.education.toUpperCase() === "YES");
+	var hasEducation = (req.body.skills.toUpperCase() === "YES");
 	if(!hasObjective){
 		responseString += "<br>Your highest degree will help Employeers see your educational achievements";
 	}	
@@ -53,6 +68,11 @@ app.post('/submit', function (req, res) {
 	}else{
                 responseString = "You should consider the following feedback:"+responseString;
         }
+
+	var hasSkills = (req.body.skills.toUpperCase() === "YES");
+	if(!hasSkills){
+		responseString += "<br>List some skills to show what you are good at"
+	}	
 	res.send(responseString);
 })
 
