@@ -68,8 +68,8 @@ app.post('/submit', function (req, res) {
 	}	
 	
 	var inSchool = (req.body.school.toUpperCase() === "YES");
-	if(hasSkills){
-		responseString += "<br>You list some relevant school courses to add to Resume"
+	if(inSchool){
+		responseString += "<br>Since Your still in school you should list some relevant school courses"
 	}
 	
 	
