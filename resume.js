@@ -62,17 +62,24 @@ app.post('/submit', function (req, res) {
 		responseString += "<br>Your highest degree will help Employeers see your educational achievements";
 	}	
 	
-	//final response string formatting
-	if(responseString.length===0){
-                responseString = "<br>Your resume is in good shape! You got this"
-	}else{
-                responseString = "You should consider the following feedback:"+responseString;
-        }
-
 	var hasSkills = (req.body.skills.toUpperCase() === "YES");
 	if(!hasSkills){
 		responseString += "<br>List some skills to show what you are good at"
 	}	
+	
+	var inSchool = (req.body.school.toUpperCase() === "YES");
+	if(hasSkills){
+		responseString += "<br>You list some relevant school courses to add to Resume"
+	}
+	
+	
+	//final response string formatting
+	if(responseString.length===0){
+		responseString = "<br>Your resume is in good shape! You got this"
+	}
+	else{
+		responseString = "You should consider the following feedback:"+responseString;
+    }
 	res.send(responseString);
 })
 
